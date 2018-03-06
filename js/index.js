@@ -9,8 +9,6 @@ var num2 = "0"; //Segundo numero ede operación
 var resul = 0; //variable para guardar resultado
 var ope = "" ; // operacion a realizar
 
-
-
 function numero(obj){
 	if (dig<9) {
 	if (x == "0" || cero==1) {
@@ -66,23 +64,33 @@ function operacion(obj){
 			ope=obj;
 			opr=1;
 		}
+		dig=1
 }
 function resultado(){
 		num2=parseFloat(x);
 		x="0";
-		resul = eval(num1+ope+num2);
-		pantalla.innerHTML=resul;
+		resul = eval(num1+ope+num2); 
+		largo = String(resul);
+		if (largo.length>8){
+			resul2 = resul.toExponential(2);
+			pantalla.innerHTML=resul2;
+		}else{
+		pantalla.innerHTML=resul}
 		num1 = resul;
 		num2 = "0";
 		ope=0;
 		opr=0;
 		punto=0;
 		cero = 1;
-}
-function presionar(){
-	var imagen=document.getElementsByClassName("img");
-	imagen.addEventListener("onmousedown",imagen.style.width="5%"
-	imagen.style.height="5%",false);
-	
-}
 
+}
+function oprimir(obj){
+	var elemento = document.getElementById(obj)
+	elemento.style.paddingTop = "4px";
+	elemento.style.paddingLeft = "4px";
+}
+function soltar(obj){
+	var elemento = document.getElementById(obj)
+	elemento.style.paddingTop = "0px";
+	elemento.style.paddingLeft = "0px";
+}
